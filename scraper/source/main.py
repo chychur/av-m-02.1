@@ -118,9 +118,12 @@ def save_to_json(data: List[List[dict]], filename: str) -> None:
         with open(filename, 'w', encoding='utf-8') as jsonfile:
             json.dump(flat_data, jsonfile, ensure_ascii=False, indent=4)
 
+
 if __name__ == '__main__':
 
     base_url = 'https://webscraper.io/test-sites/e-commerce/static/computers/laptops'
+    csv_filename = '../data/computers_data.csv'
+    json_filename = '../data/computers_data.json'
     all_data = []
     html = get_page(base_url)
 
@@ -138,8 +141,7 @@ if __name__ == '__main__':
         print(all_data)
 
         if all_data:
-            csv_filename = 'computers_data.csv'
-            json_filename = 'computers_data.json'
+
             save_to_csv(all_data, csv_filename)
             save_to_json(all_data, json_filename)
 
